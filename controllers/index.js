@@ -7,7 +7,6 @@ const sortResponse = (sort, jobs) =>
 
 const filterFunction = req => jobs => {
   let { sort, function: functionJob, skip, limit } = req
-  const count = filterJobs(jobs)(functionJob).length
   const jobsFound = filterJobs(jobs)(functionJob)
   let jobsResponse = []
 
@@ -18,14 +17,13 @@ const filterFunction = req => jobs => {
   }
   
   if (sort) {
-    return { count, jobs: sortResponse(sort, jobsResponse) }
+    return { count: jobsFound.length, jobs: sortResponse(sort, jobsResponse) }
   }
-  return { count, jobs: jobsResponse }
+  return { count: jobsFound.length, jobs: jobsResponse }
 }
 
-const filterCity = req => jobs => {
+const filterJobsByCity = req => jobs => {
   let { sort, city, skip, limit } = req
-  const count = filterJobsCity(jobs)(city).length
   const jobsFound = filterJobsCity(jobs)(city)
   let jobsResponse = []
 
@@ -36,9 +34,9 @@ const filterCity = req => jobs => {
   }
   
   if (sort) {
-    return { count, jobs: sortResponse(sort, jobsResponse) }
+    return { count: jobsFound.length, jobs: sortResponse(sort, jobsResponse) }
   }
-  return { count, jobs: jobsResponse }
+  return { count: jobsFound.length, jobs: jobsResponse }
 }
 
 const getJobs = (req, res, next) => {
@@ -51,7 +49,7 @@ const getJobs = (req, res, next) => {
     }
 
     if (city) {
-      return res.json(filterCity(req.query)(jobs.docs))
+      return res.json(filterJobsByCity(req.query)(jobs.docs))
     }
     
     for (skip; skip < limit; skip++) {
