@@ -1,0 +1,5 @@
+const app = require('../app')
+const port = 3000
+
+/* eslint-disable no-console */
+app.listen(port, () => console.log('api catho test running...'))
