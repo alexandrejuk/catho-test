@@ -217,7 +217,7 @@ test('test /api/jobs?city=nameCity method GET should be return jobs for city', a
 
 test('test /api/jobs?city=nameCity method GET should be return jobs for asc salario', async (t) => {
     const response = await request(app).get('/api/jobs').query({ sort: 1, skip: 0, limit: 4, city: 'Pelotas' })
-    const mockCityAsc = {...mocksJobs.jobsCity, jobs: sortSalarioAsc(mocksJobs.jobsCity.jobs) }
+    const mockCityAsc = Object.assign({}, { count: mocksJobs.jobsCity.count, jobs: sortSalarioAsc(mocksJobs.jobsCity.jobs) })
     t.is(
       JSON.stringify(response.body), 
       JSON.stringify(mockCityAsc)
@@ -226,7 +226,7 @@ test('test /api/jobs?city=nameCity method GET should be return jobs for asc sala
 
   test('test /api/jobs?city=nameCity method GET should be return jobs for desc salario', async (t) => {
     const response = await request(app).get('/api/jobs').query({ sort: -1, skip: 0, limit: 4, city: 'Pelotas' })
-    const mockCityAsc = {...mocksJobs.jobsCity, jobs: sortSalarioDesc(mocksJobs.jobsCity.jobs) }
+    const mockCityAsc = Object.assign({}, { count: mocksJobs.jobsCity.count, jobs: sortSalarioDesc(mocksJobs.jobsCity.jobs) })
     t.is(
       JSON.stringify(response.body), 
       JSON.stringify(mockCityAsc)
