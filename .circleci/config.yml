@@ -1,11 +1,11 @@
 version: 2
-jobs: 
+jobs:
   build:
     docker:
-      - images circleci/node:7.10
-    steps: 
+      - image: circleci/node:7.10
+    steps:
       - checkout
-      - run:
+      - run: 
           name: Install Dependencies
           command: npm install
   test:
