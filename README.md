@@ -28,7 +28,7 @@ GET http://localhost:3000/api/jobs?skip=0&limit=10&city=pelotas
 ### GET POR CARGO 
 
 ```
-GET http://localhost:3000/api/jobs?skip=0&limit=10&city=pelotas
+GET http://localhost:3000/api/jobs?skip=0&limit=10&function=analista
 ```
 
 ### GET POR CARGO COM SORT EM SALÁRIO CRESCENTE E DESCRESCENTE
