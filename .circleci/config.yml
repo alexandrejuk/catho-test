@@ -8,14 +8,6 @@ jobs:
       - run: 
           name: Install Dependencies
           command: npm install
-  test:
-    docker:
-      - image: circleci/node:7.10
-    steps:
-      - checkout
-      - run: 
-          name: Install dependencies
-          command: npm install
       - run: 
           name: Run tests
           command: npm test
@@ -24,4 +16,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test
