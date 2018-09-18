@@ -17,7 +17,7 @@
 
 ## Método GET
 
-A api possibilita fazer consulta de empregos por cidade e por função, tambem é possivel orderna por faixa salárial, também é possível passar em todas as requests o **skip** , **limit** e **sort** para suas consultas, abaixo segue os exemplos das requests.
+A api possibilita fazer consulta de empregos por cidade e por função, tambem é possivel orderna por faixa salárial, também é possível passar em todas as requests o **skip**, **limit** e **sort** para suas consultas, abaixo segue os exemplos das requests.
 
 ### GET POR CIDADE 
 
